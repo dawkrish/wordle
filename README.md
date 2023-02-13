@@ -1,1 +1,1 @@
-(DEMO)[https://kichi-wordle.netlify.app/]
+[DEMO](https://kichi-wordle.netlify.app/)
