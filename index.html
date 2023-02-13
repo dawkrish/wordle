@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <h1>Wordle</h1>
+    <br>
+    <div id="content">
+        <div id="grid">
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row"> 
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            <div class="row">
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+                <div class="item"></div>
+            </div>
+            
+        </div>
+        <br>
+        <br>
+        <div id="keyboard">
+            <div id="first-row" class="row">
+                <button class="key" onclick="addLetter(this)">Q</button>
+                <button class="key" onclick="addLetter(this)">W</button>
+                <button class="key" onclick="addLetter(this)">E</button>
+                <button class="key" onclick="addLetter(this)">R</button>
+                <button class="key" onclick="addLetter(this)">T</button>
+                <button class="key" onclick="addLetter(this)">Y</button>
+                <button class="key" onclick="addLetter(this)">U</button>
+                <button class="key" onclick="addLetter(this)">I</button>
+                <button class="key" onclick="addLetter(this)">O</button>
+                <button class="key" onclick="addLetter(this)">P</button>
+            </div>
+            <div id="second-row" class="row">
+                <button class="key" onclick="addLetter(this)">A</button>
+                <button class="key" onclick="addLetter(this)">S</button>
+                <button class="key" onclick="addLetter(this)">D</button>
+                <button class="key" onclick="addLetter(this)">F</button>
+                <button class="key" onclick="addLetter(this)">G</button>
+                <button class="key" onclick="addLetter(this)">H</button>
+                <button class="key" onclick="addLetter(this)">J</button>
+                <button class="key" onclick="addLetter(this)">K</button>
+                <button class="key" onclick="addLetter(this)">L</button>
+            </div>
+            <div id="third-row" class="row">
+                <button class="specialKey"onclick="enterButton()">Enter</button>
+                <button class="key" onclick="addLetter(this)">Z</button>
+                <button class="key" onclick="addLetter(this)">X</button>
+                <button class="key" onclick="addLetter(this)">C</button>
+                <button class="key" onclick="addLetter(this)">V</button>
+                <button class="key" onclick="addLetter(this)">B</button>
+                <button class="key" onclick="addLetter(this)">N</button>
+                <button class="key" onclick="addLetter(this)">M</button>
+                <button class="specialKey" onclick="deleteButton()">Del</button>
+            </div>
+        </div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
