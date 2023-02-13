@@ -44,7 +44,7 @@ function enterButton(){
                 }
             }, 1000);
             setTimeout(() => {
-                if(currentRow > 4){
+                if(currentRow > 5){
                     alert(`The word is ${answer}`)
                     gameRunning = false
                 }
