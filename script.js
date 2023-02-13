@@ -1,7 +1,11 @@
-
 const letterBoxes = document.getElementsByClassName('item')
 const keys = document.getElementsByClassName('key')
-
+const key_arr = ['a','b','c','d','e',
+                    'f','g','h','i','j',
+                    'k',
+                    'l','m','n','o','p',
+                    'q','r','s','t','u',
+                    'v','w','x','y','z']
 
 let answer = 'USAGE'
 let currentTry = ""
@@ -96,6 +100,26 @@ function getKey(letter){
         }
     }
 }
+
+window.addEventListener('keydown',(e)=>{
+    console.log(e.key)
+    if(key_arr.includes(e.key.toLowerCase())){
+        if(gameRunning){
+            if(currentTry.length != 5){
+                currentTry += e.key.toUpperCase()
+                letterBoxes[letterBoxCount].innerHTML = e.key.toUpperCase()
+                letterBoxCount+=1
+                console.log(currentTry)
+            }
+        }
+    }
+    if(e.key == 'Enter'){
+        enterButton()
+    }
+    if(e.key == 'Backspace'){
+        deleteButton()
+    }
+})
 
 
 
