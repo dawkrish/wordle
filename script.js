@@ -1,3 +1,5 @@
+import {random_word} from "./words.js"
+
 const letterBoxes = document.getElementsByClassName('item')
 const keys = document.getElementsByClassName('key')
 const key_arr = ['a','b','c','d','e',
@@ -7,11 +9,24 @@ const key_arr = ['a','b','c','d','e',
                     'q','r','s','t','u',
                     'v','w','x','y','z']
 
-let answer = 'USAGE'
+
+
+let answer = random_word.toUpperCase()
+console.log(answer)
 let currentTry = ""
 let currentRow= 0
 let letterBoxCount = 0
 let gameRunning = true
+
+async function validWord(word){
+    const response = await fetch(`https://api.api-ninjas.com/v1/dictionary?word=${word}`,
+    {headers: { 'X-Api-Key': 'KGt5eIbCIZz0mKmabwtAKw==QPAYMSj7mPbR4XKk'},
+    contentType: 'application/json',
+    mode:'cors',})
+    const data = await response.json()
+    // console.log(data)
+    return data.valid
+}
 
 
 function addLetter(letter){
@@ -26,33 +41,36 @@ function addLetter(letter){
     
 }
 
-function enterButton(){
+async function enterButton(){
     if(gameRunning){
         if(currentTry.length != 5){
             alert('Enter a 5 letter word !')
         }
-        // if(valid()){
-        //     pass
-        // }
         else{
-            check()
-            setTimeout(() => {
-                if(answer == currentTry){
-                    alert('You have won !')
-                    gameRunning = false
-                    return
-                }
-                else{
-                    currentRow +=1
-                    currentTry = ""
-                }
-            }, 1000);
-            setTimeout(() => {
-                if(currentRow > 5){
-                    alert(`The word is ${answer}`)
-                    gameRunning = false
-                }
-            }, 1000);   
+            let validity = await validWord(currentTry)
+            if(validity == true){
+                check()
+                setTimeout(() => {
+                    if(answer == currentTry){
+                        alert('You have won !')
+                        gameRunning = false
+                        return
+                    }
+                    else{
+                        currentRow +=1 // moving to next row
+                        currentTry = "" // reseting the currenTry
+                    }
+                }, 1000);
+                setTimeout(() => {
+                        if(currentRow > 5){
+                            alert(`The word is ${answer}`)
+                            gameRunning = false
+                        }
+                }, 1000);   
+            }
+            else{
+                alert('Enter a valid word !')
+            }
         }
     }
 }
@@ -102,7 +120,6 @@ function getKey(letter){
 }
 
 window.addEventListener('keydown',(e)=>{
-    console.log(e.key)
     if(key_arr.includes(e.key.toLowerCase())){
         if(gameRunning){
             if(currentTry.length != 5){
