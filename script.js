@@ -7,48 +7,59 @@ let answer = 'USAGE'
 let currentTry = ""
 let currentRow= 0
 let letterBoxCount = 0
+let gameRunning = true
 
 
 function addLetter(letter){
-    if(currentTry.length != 5){
-        currentTry += letter.innerHTML
-        letterBoxes[letterBoxCount].innerHTML = letter.innerHTML
-        letterBoxCount+=1
-        console.log(currentTry)
+    if(gameRunning){
+        if(currentTry.length != 5){
+            currentTry += letter.innerHTML
+            letterBoxes[letterBoxCount].innerHTML = letter.innerHTML
+            letterBoxCount+=1
+            console.log(currentTry)
+        }
     }
-    if(currentTry.length == 5){
-        
-        
-    }
+    
 }
 
 function enterButton(){
-    if(currentTry.length != 5){
-        alert('Enter a 5 letter word !')
-    }
-    // if(valid()){
-    //     pass
-    // }
-    else{
-        check()
-        setTimeout(() => {
-            if(answer == currentTry){
-                alert('You have won !')
-                return
-            }
-            else{
-                currentRow +=1
-                currentTry = ""
-            }
-        }, 2000);
+    if(gameRunning){
+        if(currentTry.length != 5){
+            alert('Enter a 5 letter word !')
+        }
+        // if(valid()){
+        //     pass
+        // }
+        else{
+            check()
+            setTimeout(() => {
+                if(answer == currentTry){
+                    alert('You have won !')
+                    gameRunning = false
+                    return
+                }
+                else{
+                    currentRow +=1
+                    currentTry = ""
+                }
+            }, 1000);
+            setTimeout(() => {
+                if(currentRow > 4){
+                    alert(`The word is ${answer}`)
+                    gameRunning = false
+                }
+            }, 1000);   
+        }
     }
 }
 
 function deleteButton(){
-    if(currentTry.length > 0){
-        currentTry = currentTry.slice(0,-1)
-        letterBoxCount -=1
-        letterBoxes[letterBoxCount].innerHTML = ""
+    if(gameRunning){
+        if(currentTry.length > 0){
+            currentTry = currentTry.slice(0,-1)
+            letterBoxCount -=1
+            letterBoxes[letterBoxCount].innerHTML = ""
+        }
     }
 }
 
