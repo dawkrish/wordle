@@ -17,7 +17,7 @@ const key_arr = ['a','b','c','d','e',
 
 
 let answer = random_word.toUpperCase()
-console.log(answer)
+// console.log("the answeer is " + answer)
 let currentTry = ""
 let currentRow= 0
 let letterBoxCount = 0
@@ -91,21 +91,20 @@ function check(){
         let key = getKey(currentTry[i])
         key.style.backgroundColor = "#3a3a3c"
     }
-
     for(let i = 0; i < 5; i++){
-        for(let j = 0; j < 5; j++){
-            let key = getKey(currentTry[j])
-            if(answer[i] == currentTry[j] && i != j){
-                letterBoxes[currentRow * 5 + j].style.backgroundColor = "#b59f3b"
-                letterBoxes[currentRow * 5 + j].style.border = "2px solid #b59f3b"
-                key.style.backgroundColor = "#b59f3b"
-
-            }
-            else if(answer[i] == currentTry[j] && i == j){
-                letterBoxes[currentRow * 5 + j].style.backgroundColor = "#538d4e"
-                letterBoxes[currentRow * 5 + j].style.border = "2px solid #538d4e"
-                key.style.backgroundColor = "#538d4e"
-            }
+        let key = getKey(currentTry[i])
+        if(currentTry[i] == answer[i]){
+            letterBoxes[currentRow * 5 + i].style.backgroundColor = "#538d4e"
+            letterBoxes[currentRow * 5 + i].style.border = "2px solid #538d4e"
+            key.style.backgroundColor = "#538d4e"
+        }
+    }
+    for(let i = 0; i < 5; i++){
+        let key = getKey(currentTry[i])
+        if(answer.includes(currentTry[i]) && answer[i] != currentTry[i]){
+            letterBoxes[currentRow * 5 + i].style.backgroundColor = "#b59f3b"
+            letterBoxes[currentRow * 5 + i].style.border = "2px solid #b59f3b"
+            key.style.backgroundColor = "#b59f3b"
         }
     }
 
