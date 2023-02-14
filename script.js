@@ -1,4 +1,9 @@
-import {random_word} from "./words.js"
+import {word_function} from './words.js'
+
+let words_arr = word_function()
+console.log(words_arr)
+let random_word = words_arr[Math.floor(Math.random() * words_arr.length )]
+
 
 const letterBoxes = document.getElementsByClassName('item')
 const keys = document.getElementsByClassName('key')
@@ -18,18 +23,13 @@ let currentRow= 0
 let letterBoxCount = 0
 let gameRunning = true
 
-async function validWord(word){
-    const response = await fetch(`https://api.api-ninjas.com/v1/dictionary?word=${word}`,
-    {headers: { 'X-Api-Key': 'KGt5eIbCIZz0mKmabwtAKw==QPAYMSj7mPbR4XKk'},
-    contentType: 'application/json',
-    mode:'cors',})
-    const data = await response.json()
-    // console.log(data)
-    return data.valid
+window.validWord = function(word){
+    console.log(words_arr.includes(word.toLowerCase()))
+    return words_arr.includes(word.toLowerCase())
 }
 
 
-function addLetter(letter){
+window.addLetter = function(letter){
     if(gameRunning){
         if(currentTry.length != 5){
             currentTry += letter.innerHTML
@@ -41,7 +41,7 @@ function addLetter(letter){
     
 }
 
-async function enterButton(){
+window.enterButton = async function (){
     if(gameRunning){
         if(currentTry.length != 5){
             alert('Enter a 5 letter word !')
@@ -75,7 +75,7 @@ async function enterButton(){
     }
 }
 
-function deleteButton(){
+window.deleteButton = function(){
     if(gameRunning){
         if(currentTry.length > 0){
             currentTry = currentTry.slice(0,-1)
