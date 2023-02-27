@@ -1,7 +1,6 @@
 import {word_function} from './words.js'
 
 let words_arr = word_function()
-console.log(words_arr)
 let random_word = words_arr[Math.floor(Math.random() * words_arr.length )]
 
 
@@ -17,11 +16,13 @@ const key_arr = ['a','b','c','d','e',
 
 
 let answer = random_word.toUpperCase()
-// console.log("the answeer is " + answer)
 let currentTry = ""
 let currentRow= 0
 let letterBoxCount = 0
 let gameRunning = true
+
+
+
 
 window.validWord = function(word){
     console.log(words_arr.includes(word.toLowerCase()))
@@ -136,6 +137,7 @@ window.addEventListener('keydown',(e)=>{
         deleteButton()
     }
 })
+
 
 
 
